@@ -1,23 +1,34 @@
 package hr.java.production.model;
 
+
+import hr.java.production.enums.Cities;
+
+/**
+ * klasa koja sluzi za sve artikle koji su tipa adresa
+ */
 public class Address {
     private String street;
     private String houseNumber;
-    private String city;
-    private String postalCode;
-
-    private Address(String street, String houseNumber, String city, String postalCode) {
+    private Cities city;
+    /**
+     * sluzi builderu za instanciranje objekta
+     *
+     * @param street ulica
+     * @param houseNumber broj ulice
+     * @param city grad
+     * @param
+     * */
+    private Address(String street, String houseNumber, Cities city) {
         this.street = street;
         this.houseNumber = houseNumber;
         this.city = city;
-        this.postalCode = postalCode;
     }
+
 
     public static class Builder {
         private String street;
         private String houseNumber;
-        private String city;
-        private String postalCode;
+        private Cities city;
 
         public Builder(String street) {
             this.street = street;
@@ -28,18 +39,19 @@ public class Address {
             return this;
         }
 
-        public Builder setCity(String city) {
+        public Builder setCity(Cities city) {
             this.city = city;
             return this;
         }
 
-        public Builder setPostalCode(String postalCode) {
-            this.postalCode = postalCode;
-            return this;
-        }
 
+
+        /**
+         * instancira objekt tipa Address
+         * @return vraca objekt tipa Address
+         */
         public Address build() {
-            return new Address(this.street, this.houseNumber, this.city, this.postalCode);
+            return new Address(this.street, this.houseNumber, this.city);
         }
 
     }
@@ -59,19 +71,25 @@ public class Address {
         this.houseNumber = houseNumber;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
+    public void setCity(Cities city) {
         this.city = city;
     }
 
     public String getPostalCode() {
-        return postalCode;
+        return city.getPostalCode();
+    }
+    public String getCityName() {
+        return city.getName();
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }
