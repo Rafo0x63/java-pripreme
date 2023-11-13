@@ -3,10 +3,14 @@ package hr.java.production.main;
 import hr.java.production.enums.Cities;
 import hr.java.production.exception.ConflictingArticlesException;
 import hr.java.production.exception.ConflictingCategoryException;
+import hr.java.production.generics.FoodStore;
+import hr.java.production.generics.TechnicalStore;
 import hr.java.production.model.*;
 
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import hr.java.production.sort.ProductionSorter;
 import org.slf4j.Logger;
@@ -246,7 +250,10 @@ public class Main {
                     logger.error(e.getMessage());
                 }
             } while (true);
-            stores.add(new Store(name, webAdress, selectedItems));
+            System.out.println("Unesite vrstu trgovine:\n1 Tehnička trgovina\n2 Trgovina hranom");
+            int typeOfStore = scanner.nextInt();
+            scanner.nextLine();
+            stores.add(typeOfStore == 1 ? new TechnicalStore(name, webAdress, selectedItems) : new FoodStore(name, webAdress, selectedItems));
         }
         return stores;
     }
@@ -283,7 +290,7 @@ public class Main {
             for (Item i : items) {
                 if (i.getCategory().equals(c)) getItemsByCategory.add(i);
             }
-                itemsByCategory.put(c, sortItemsByPrice(getItemsByCategory));
+            itemsByCategory.put(c, sortItemsByPrice(getItemsByCategory));
         }
 
         Factory maxVolumeFactory = factories.get(0);
@@ -364,6 +371,46 @@ public class Main {
 
         System.out.println("Najskuplji jestivi artikl je " + edibleItems.get(0).getName() + ", a najjeftiniji " + edibleItems.get(edibleItems.size() - 1).getName());
         System.out.println("Najskuplji tehnicki artikl je " + technicalItems.get(0).getName() + ", a najjeftiniji " + technicalItems.get(edibleItems.size() - 1).getName());
+
+        items.stream().sorted((i1, i2) -> i1.getHeight().multiply(i1.getLength()).multiply(i1.getHeight()).compareTo(i2.getHeight().multiply(i2.getLength()).multiply(i2.getHeight()))).collect(Collectors.toList());
+
+        BigDecimal avgVolume = items.stream()
+                .map(item -> item.getVolume())
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .divide(BigDecimal.valueOf(items.size()), 2, BigDecimal.ROUND_HALF_UP);
+
+        BigDecimal avgPrice = items.stream()
+                .filter(item -> item.getVolume().compareTo(avgVolume) > 0)
+                .map(item -> item.getSellingPrice())
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .divide(BigDecimal.valueOf(items.size()), 2, BigDecimal.ROUND_HALF_UP);
+
+        System.out.println("\nSrednja cijena svih artikala koji imaju nadprosječni volumen je " + avgPrice);
+
+        double avgItems = stores.stream()
+                .mapToInt(store -> store.getItems().size())
+                .average().getAsDouble();
+
+
+        List<Store> aboveAvgItemsStores = (stores.stream()
+                .filter(store -> store.getItems().size() > avgItems)).toList();
+
+        System.out.println("\nTrgovine koje imaju nadprosječan broj artikala su ");
+        for (Store str : aboveAvgItemsStores) {
+            System.out.println(str.getName());
+        }
+
+        List<Item> discountedItems = items.stream()
+                .filter(item -> item.getDiscount().compareTo(BigDecimal.ZERO) > 0)
+                .toList();
+        if (!discountedItems.isEmpty()) {
+            System.out.println("\nProizvodi pronadeni");
+        } else {
+            Optional result = Optional.empty();
+            System.out.println("\nNe postoje proizvodi s popustom");
+        }
+
+
     }
 
     private static ArrayList<Item> sortItemsByPrice(ArrayList<Item> items) {

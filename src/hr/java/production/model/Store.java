@@ -1,26 +1,22 @@
 package hr.java.production.model;
 
-import java.util.ArrayList;
 import java.util.Set;
 
 /**
  * klasa koja sluzi za sve artikle koji su tipa store
  */
-public class Store extends NamedEntity {
+public abstract class Store<T> extends NamedEntity {
     private String webAddress;
-    private Set<Item> items;
 
     /**
      * sluzi za instanciranje objekata klase Store
      *
      * @param name ime
      * @param webAddress stranica
-     * @param items artikli
      */
-    public Store(String name, String webAddress, Set<Item> items) {
+    public Store(String name, String webAddress) {
         super(name);
         this.webAddress = webAddress;
-        this.items = items;
     }
 
     public String getName() {
@@ -39,13 +35,7 @@ public class Store extends NamedEntity {
         this.webAddress = webAddress;
     }
 
-    public Set<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(Set<Item> items) {
-        this.items = items;
-    }
+    public abstract Set<T> getItems();
 
     @Override
     public int hashCode() {

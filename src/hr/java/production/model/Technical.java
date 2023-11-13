@@ -1,5 +1,7 @@
 package hr.java.production.model;
 
+import hr.java.production.generics.TechnicalStore;
+
 /**
  * koristi se za sve klase koje su tehnickog tipa
  */

@@ -93,6 +93,13 @@ public class Item extends NamedEntity {
         this.sellingPrice = sellingPrice;
     }
 
+    public BigDecimal getVolume() {
+        return this.height.multiply(this.width).multiply(this.length);
+    }
+
+    public BigDecimal getDiscount() {
+        return this.discount.discountAmount();
+    }
     @Override
     public int hashCode() {
         return super.hashCode();
