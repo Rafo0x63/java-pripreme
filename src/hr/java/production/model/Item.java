@@ -109,4 +109,17 @@ public class Item extends NamedEntity {
     public boolean equals(Object obj) {
         return super.equals(obj);
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "category=" + category +
+                ", width=" + width +
+                ", height=" + height +
+                ", length=" + length +
+                ", productionCost=" + productionCost +
+                ", sellingPrice=" + sellingPrice +
+                ", discount=" + discount +
+                '}';
+    }
 }

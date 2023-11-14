@@ -108,3 +108,13 @@
 2023-11-13 22:00:19,350 INFO [main] h.j.p.m.Main [Main.java:281] Uneseni su artikli
 2023-11-13 22:00:19,366 INFO [main] h.j.p.m.Main [Main.java:283] Unesene su tvornice
 2023-11-13 22:00:19,368 INFO [main] h.j.p.m.Main [Main.java:285] Unesene su trgovine
+2023-11-14 13:00:19,402 INFO [main] h.j.p.m.Main [Main.java:274] Program je pokrenut.
+2023-11-14 13:00:22,347 INFO [main] h.j.p.m.Main [Main.java:279] Unesene su kategorije
+2023-11-14 13:00:22,377 INFO [main] h.j.p.m.Main [Main.java:281] Uneseni su artikli
+2023-11-14 13:00:22,385 INFO [main] h.j.p.m.Main [Main.java:283] Unesene su tvornice
+2023-11-14 13:00:22,387 INFO [main] h.j.p.m.Main [Main.java:285] Unesene su trgovine
+2023-11-14 13:00:50,037 INFO [main] h.j.p.m.Main [Main.java:274] Program je pokrenut.
+2023-11-14 13:00:50,367 INFO [main] h.j.p.m.Main [Main.java:279] Unesene su kategorije
+2023-11-14 13:00:50,391 INFO [main] h.j.p.m.Main [Main.java:281] Uneseni su artikli
+2023-11-14 13:00:50,402 INFO [main] h.j.p.m.Main [Main.java:283] Unesene su tvornice
+2023-11-14 13:00:50,404 INFO [main] h.j.p.m.Main [Main.java:285] Unesene su trgovine

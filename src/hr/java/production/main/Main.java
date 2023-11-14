@@ -407,9 +407,11 @@ public class Main {
             System.out.println("\nProizvodi pronadeni");
         } else {
             Optional result = Optional.empty();
-            System.out.println("\nNe postoje proizvodi s popustom");
+            System.out.println("\nNe postoje proizvodi s popustom\n");
         }
 
+        stores.stream()
+                .map(store -> store.getItems()).forEach(System.out::println);
 
     }
 
