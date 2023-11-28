@@ -1,13 +1,13 @@
 package hr.java.production.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * klasa koja sluzi za sve artikle koji su tipa beef
  */
-public class Beef extends Item implements Edible {
+public class Beef extends Item implements Edible, Serializable {
     private final int kcalPerKg = 2505;
-
     private BigDecimal weight;
 
     /**
@@ -23,8 +23,8 @@ public class Beef extends Item implements Edible {
      * @param weight tezina
      * @param discount popust
      */
-    public Beef(String name, Category category, BigDecimal width, BigDecimal height, BigDecimal length, BigDecimal productionCost, BigDecimal sellingPrice, BigDecimal weight, Discount discount) {
-        super(name, category, width, height, length, productionCost, sellingPrice, discount);
+    public Beef(Long id, String name, Category category, BigDecimal width, BigDecimal height, BigDecimal length, BigDecimal productionCost, BigDecimal sellingPrice, BigDecimal weight, Discount discount) {
+        super(id, name, category, width, height, length, productionCost, sellingPrice, discount);
         this.weight = weight;
     }
 

@@ -1,9 +1,13 @@
 package hr.java.production.model;
 
+import java.io.Serializable;
+
 /**
  * super klasa za klase s poljem "ime"
  */
-public class NamedEntity {
+public class NamedEntity implements Serializable {
+
+    private Long id;
     private String name;
 
     /**
@@ -11,7 +15,8 @@ public class NamedEntity {
      *
      * @param name ime
      */
-    public NamedEntity(String name) {
+    public NamedEntity(Long id, String name) {
+        this.id = id;
         this.name = name;
     }
 

@@ -1,17 +1,19 @@
 package hr.java.production.model;
 
+import java.io.Serializable;
+
 /**
  * klasa za objekte kategorije
  */
-public class Category extends NamedEntity {
+public class Category extends NamedEntity implements Serializable {
     private String description;
 
     /**
      * @param name ime
      * @param description opis
      */
-    public Category(String name, String description) {
-        super(name);
+    public Category(Long id, String name, String description) {
+        super(id, name);
         this.description = description;
     }
 

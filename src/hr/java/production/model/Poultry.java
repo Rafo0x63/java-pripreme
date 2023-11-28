@@ -1,11 +1,12 @@
 package hr.java.production.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * klasa koja sluzi za sve artikle koji su tipa poultry
  */
-public class Poultry extends Item implements Edible {
+public class Poultry extends Item implements Edible, Serializable {
     private final int kcalPerKg = 2390;
     private BigDecimal weight;
 
@@ -21,8 +22,8 @@ public class Poultry extends Item implements Edible {
      * @param sellingPrice prodajna cijena
      * @param discount popust
      */
-    public Poultry(String name, Category category, BigDecimal width, BigDecimal height, BigDecimal length, BigDecimal productionCost, BigDecimal sellingPrice, BigDecimal weight, Discount discount) {
-        super(name, category, width, height, length, productionCost, sellingPrice, discount);
+    public Poultry(Long id, String name, Category category, BigDecimal width, BigDecimal height, BigDecimal length, BigDecimal productionCost, BigDecimal sellingPrice, BigDecimal weight, Discount discount) {
+        super(id, name, category, width, height, length, productionCost, sellingPrice, discount);
         this.weight = weight;
     }
 

@@ -1,11 +1,12 @@
 package hr.java.production.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * klasa za sve artikle koji se unose
  */
-public class Item extends NamedEntity {
+public class Item extends NamedEntity implements Serializable {
     private Category category;
     private BigDecimal width;
     private BigDecimal height;
@@ -26,8 +27,8 @@ public class Item extends NamedEntity {
      * @param sellingPrice prodajna cijena
      * @param discount popust
      */
-    public Item(String name, Category category, BigDecimal width, BigDecimal height, BigDecimal length, BigDecimal productionCost, BigDecimal sellingPrice, Discount discount) {
-        super(name);
+    public Item(Long id, String name, Category category, BigDecimal width, BigDecimal height, BigDecimal length, BigDecimal productionCost, BigDecimal sellingPrice, Discount discount) {
+        super(id, name);
         this.category = category;
         this.width = width;
         this.height = height;

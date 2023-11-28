@@ -1,5 +1,6 @@
 package hr.java.production.model;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Set;
@@ -7,7 +8,7 @@ import java.util.Set;
 /**
  * klasa koja sluzi za kreiranje objekata tvornice
  */
-public class Factory extends NamedEntity {
+public class Factory extends NamedEntity implements Serializable {
     private Address address;
     private Set<Item> items;
 
@@ -18,8 +19,8 @@ public class Factory extends NamedEntity {
      * @param address adresa
      * @param items artikli
      */
-    public Factory(String name, Address address, Set<Item> items) {
-        super(name);
+    public Factory(Long id, String name, Address address, Set<Item> items) {
+        super(id, name);
         this.address = address;
         this.items = items;
     }

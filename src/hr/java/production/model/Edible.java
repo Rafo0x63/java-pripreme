@@ -1,5 +1,6 @@
 package hr.java.production.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -12,4 +13,5 @@ public interface Edible {
     public BigDecimal calculateProductionPrice();
 
     public BigDecimal calculateSellingPrice();
+
 }

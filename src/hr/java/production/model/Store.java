@@ -1,11 +1,13 @@
 package hr.java.production.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 /**
  * klasa koja sluzi za sve artikle koji su tipa store
  */
-public abstract class Store<T> extends NamedEntity {
+public abstract class Store<T> extends NamedEntity implements Serializable {
+    private Long id;
     private String webAddress;
 
     /**
@@ -14,8 +16,8 @@ public abstract class Store<T> extends NamedEntity {
      * @param name ime
      * @param webAddress stranica
      */
-    public Store(String name, String webAddress) {
-        super(name);
+    public Store(Long id, String name, String webAddress) {
+        super(id, name);
         this.webAddress = webAddress;
     }
 

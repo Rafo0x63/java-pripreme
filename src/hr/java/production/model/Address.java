@@ -3,10 +3,12 @@ package hr.java.production.model;
 
 import hr.java.production.enums.Cities;
 
+import java.io.Serializable;
+
 /**
  * klasa koja sluzi za sve artikle koji su tipa adresa
  */
-public class Address {
+public class Address implements Serializable {
     private String street;
     private String houseNumber;
     private Cities city;

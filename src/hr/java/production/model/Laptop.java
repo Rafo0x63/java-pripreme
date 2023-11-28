@@ -1,12 +1,12 @@
 package hr.java.production.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * klasa koja sluzi za sve artikle koji su tipa laptop
  */
-public final class Laptop extends Item implements Technical {
-
+public final class Laptop extends Item implements Technical, Serializable {
     private Integer warranty;
 
     /**
@@ -22,8 +22,8 @@ public final class Laptop extends Item implements Technical {
      * @param discount popust
      * @param warranty garancija
      */
-    public Laptop(String name, Category category, BigDecimal width, BigDecimal height, BigDecimal length, BigDecimal productionCost, BigDecimal sellingPrice, Discount discount, Integer warranty) {
-        super(name, category, width, height, length, productionCost, sellingPrice, discount);
+    public Laptop(Long id, String name, Category category, BigDecimal width, BigDecimal height, BigDecimal length, BigDecimal productionCost, BigDecimal sellingPrice, Discount discount, Integer warranty) {
+        super(id, name, category, width, height, length, productionCost, sellingPrice, discount);
         this.warranty = warranty;
     }
 
